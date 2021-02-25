@@ -37,7 +37,7 @@ public class ServerThread implements Runnable {
                 System.out.println("serverino in ascolto...");
                 richiesta = in.readLine();
                 System.out.println("stringa dal client: " + richiesta);
-                out.println(richiesta.toUpperCase());
+                out.println(richiesta.length());
             }
 
             out.close();
