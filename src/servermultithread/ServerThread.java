@@ -28,19 +28,20 @@ public class ServerThread implements Runnable {
                 + clientSocket.getInetAddress());
         try {
 
-            PrintWriter out
-                    = new PrintWriter(clientSocket.getOutputStream(), true);
+//            PrintWriter out
+//                    = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(clientSocket.getInputStream()));
-            String richiesta = "";
-            while (!richiesta.equals("exit")) {
+            int num = 0;
+            String n = "";
+//            while (!richiesta.equals("exit")) {
                 System.out.println("serverino in ascolto...");
-                richiesta = in.readLine();
-                System.out.println("stringa dal client: " + richiesta);
-                out.println(richiesta.length());
-            }
+                n = in.readLine();
+                System.out.println("stringa dal client: " + n);
+//                out.println(richiesta.length());
+//            }
 
-            out.close();
+//            out.close();
             clientSocket.close();
 
             System.out.println("chiusura connessione effettuata");
