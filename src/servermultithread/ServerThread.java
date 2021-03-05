@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 public class ServerThread implements Runnable {
 
     private Socket clientSocket;
+    public static int num = 0;
 
     public ServerThread(Socket clientSocket) {
         this.clientSocket = clientSocket;
@@ -24,29 +25,35 @@ public class ServerThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Serverino  partito: "
-                + clientSocket.getInetAddress());
-        try {
+//        System.out.println("Serverino  partito: "
+//                + clientSocket.getInetAddress());
+        try
+        {
 
 //            PrintWriter out
 //                    = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(clientSocket.getInputStream()));
-            int num = 0;
             String n = "";
 //            while (!richiesta.equals("exit")) {
-                System.out.println("serverino in ascolto...");
-                n = in.readLine();
-                System.out.println("stringa dal client: " + n);
-//                out.println(richiesta.length());
-//            }
-
-//            out.close();
-            clientSocket.close();
-
-            System.out.println("chiusura connessione effettuata");
-
-        } catch (IOException ex) {
+            System.out.println("serverino in ascolto...");
+            n = in.readLine();
+            System.out.println("stringa dal client: " + n);
+            int a = Integer.parseInt(n);
+            Thread t = null;
+            for (int i = 0; i < a; i++)
+            {
+                t = new Thread(new thread(i));
+                t.start();
+            }
+            while(true){
+                if(t.isAlive() == false){
+                    System.out.println(num);
+                    break;
+                }
+            }
+        } catch (IOException ex)
+        {
             Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

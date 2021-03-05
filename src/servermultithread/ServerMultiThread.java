@@ -24,7 +24,6 @@ public class ServerMultiThread {
             ServerSocket server
                     = new ServerSocket(5500);
             System.out.println("Server è attivo e in ascolto");
-
             while (true) {
                 Socket client = server.accept();
                 System.out.println("connessione ricevuta, ora se la smazza il thread");

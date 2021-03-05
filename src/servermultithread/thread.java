@@ -24,6 +24,6 @@ public class thread implements Runnable {
     }
 
     public void somma() {
-        r = r + n;
+        ServerThread.num = ServerThread.num + n;
     }
 }
